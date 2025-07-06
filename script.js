@@ -1,6 +1,31 @@
-//Table
+// Table
 function getScreenWidth() {
-    return innerWidth; // ブラウザの横幅を取得
+    return innerWidth;
+}
+
+const numbers = [1, 2, 3, 4, 5, 6];
+
+function createTable(rows, cols) {
+    // HTMLから既存のテーブル要素を取得
+    const table = document.querySelector('.number-table');
+    table.innerHTML = '';
+    
+    for(let i = 0; i < rows; i++) {
+        const row = document.createElement('tr');
+        for(let j = 0; j < cols; j++) {
+            const cell = document.createElement('td');
+            const index = i * cols + j;
+            
+            // 配列の範囲内かチェック
+            if (index < numbers.length) {
+                cell.textContent = numbers[index];
+            }
+            
+            row.appendChild(cell);
+        }
+        table.appendChild(row);
+    }
+    // document.body.appendChild(table); ← この行は不要（既にHTMLに存在）
 }
 
 // 画面幅をチェックする関数
@@ -9,53 +34,19 @@ function checkScreenWidth() {
     console.log('現在の画面幅:', width + 'px');
 
     if (width <= 600) {
-        console.log('600px以下: 横2×縦3で表示');
-        createTable2x3();
+        console.log('600px以下: 3行2列で表示');
+        createTable(3, 2);  // 3行2列
     } else {
-        console.log('600px以上: 横3×縦2で表示');
-        createTable3x2();
+        console.log('600px以上: 2行3列で表示');
+        createTable(2, 3);  // 2行3列
     }
-}
-
-function createTable2x3() {
-    const table = document.querySelector('.number-table');
-    table.innerHTML = `
-        <tr>
-            <td>1</td>
-            <td>2</td>
-        </tr>
-        <tr class="blue">
-            <td>3</td>
-            <td>4</td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>6</td>
-        </tr>
-    `;
-}
-
-function createTable3x2() {
-    const table = document.querySelector('.number-table');
-    table.innerHTML = `
-        <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-        </tr>
-        <tr class="blue">
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-        </tr>
-    `;
 }
 
 // 画面サイズが変更されたときに実行
 addEventListener('resize', checkScreenWidth);
 
-// ページ読み込み時に一度だけ実行
-checkScreenWidth();
+// ページ読み込み時に実行
+addEventListener('load', checkScreenWidth);
 
 
 // カウンター
