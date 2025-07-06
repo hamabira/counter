@@ -1,28 +1,4 @@
-
-const counterDisplay = document.querySelector('.counter');
-
-const incrementButton = document.querySelector('.increment');
-const resetButton = document.querySelector('.reset');
-
-// カウンターの値
-let counterValue = 0;
-
-// カウンターの表示を更新する関数
-function updateCounterDisplay() {
-    counterDisplay.textContent = counterValue;
-}
-
-// イベントリスナーの設定
-incrementButton.addEventListener('click', () => {
-    counterValue++;
-    updateCounterDisplay();
-});
-
-resetButton.addEventListener('click', () => {
-    counterValue = 0;
-    updateCounterDisplay();
-});
-
+//Table
 function getScreenWidth() {
     return innerWidth; // ブラウザの横幅を取得
 }
@@ -81,6 +57,33 @@ addEventListener('resize', checkScreenWidth);
 // ページ読み込み時に一度だけ実行
 checkScreenWidth();
 
+
+// カウンター
+const counterDisplay = document.querySelector('.counter');
+
+const incrementButton = document.querySelector('.increment');
+const resetButton = document.querySelector('.reset');
+
+// カウンターの値
+let counterValue = 0;
+
+// カウンターの表示を更新する関数
+function updateCounterDisplay() {
+    counterDisplay.textContent = counterValue;
+}
+
+// イベントリスナーの設定
+incrementButton.addEventListener('click', () => {
+    counterValue++;
+    updateCounterDisplay();
+});
+
+resetButton.addEventListener('click', () => {
+    counterValue = 0;
+    updateCounterDisplay();
+});
+
+// 時計
 const clockDisplay = document.querySelector('.clock');
 
 function getCurrentTime() {
@@ -112,7 +115,7 @@ function updateClock() {
 setInterval(updateClock, 100);  // 100ミリ秒 = 0.1秒
 updateClock();  // 最初に一度実行
 
-
+// 文字数カウンター
 const textInput = document.querySelector('.string-input');
 const stringCounterDisplay = document.querySelector('.string-counter');
 
