@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <title>切り分けテスト（ウィンドウ幅表示）</title>
+    <style>
+        body { margin: 20px; font-family: sans-serif; }
+        #info-box {
+            border: 2px solid blue;
+            background-color: #eef;
+            padding: 20px;
+            font-size: 24px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="info-box">
+        </div>
+
+    <script>
+        // 1. 表示を更新する関数を定義
+        function showWindowWidth() {
+            // ブラウザウィンドウの内側の幅を取得
+            const currentWidth = window.innerWidth;
+
+            // コンソールに現在の幅を出力
+            console.log(`現在のウィンドウ幅: ${currentWidth}px`);
+
+            // 確認しやすいように、画面上のボックスにも幅を表示
+            const infoBox = document.getElementById('info-box');
+            infoBox.textContent = `現在のウィンドウ幅: ${currentWidth}px`;
+        }
+
+        // 2. ウィンドウのリサイズイベントを監視する
+        // ウィンドウのサイズが変更されるたびに 'showWindowWidth' 関数を実行する
+        window.addEventListener('resize', showWindowWidth);
+
+        // 3. ページを読み込んだ直後にも一度実行する
+        showWindowWidth();
+    </script>
+</body>
+</html>

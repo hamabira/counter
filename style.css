@@ -1,0 +1,15 @@
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.blue{
+    background-color: blue;
+    color: white; 
+}
+
+.numberTable td {
+    text-align: center;   
+    vertical-align: middle;
+    padding: 10px;         
+}
