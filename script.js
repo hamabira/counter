@@ -25,7 +25,6 @@ function createTable(rows, cols) {
         }
         table.appendChild(row);
     }
-    // document.body.appendChild(table); ← この行は不要（既にHTMLに存在）
 }
 
 // 画面幅をチェックする関数
