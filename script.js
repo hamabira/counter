@@ -32,7 +32,7 @@ function checkScreenWidth() {
     const width = getScreenWidth();
     console.log('現在の画面幅:', width + 'px');
 
-    if (width <= 60) {
+    if (width <= 600) {
         console.log('600px以下: 横2×縦3で表示');
         createTable2x3();
     } else {
