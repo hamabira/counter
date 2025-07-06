@@ -6,7 +6,6 @@ function getScreenWidth() {
 const numbers = [1, 2, 3, 4, 5, 6];
 
 function createTable(rows, cols) {
-    // HTMLから既存のテーブル要素を取得
     const table = document.querySelector('.number-table');
     table.innerHTML = '';
     
@@ -15,6 +14,9 @@ function createTable(rows, cols) {
         for(let j = 0; j < cols; j++) {
             const cell = document.createElement('td');
             const index = i * cols + j;
+            
+            // TailwindCSSクラスを追加（統一された色）
+            cell.className = 'border border-gray-400 px-4 py-2 text-center font-semibold bg-gray-50 hover:bg-gray-100 transition-colors';
             
             // 配列の範囲内かチェック
             if (index < numbers.length) {
@@ -47,10 +49,8 @@ addEventListener('resize', checkScreenWidth);
 // ページ読み込み時に実行
 addEventListener('load', checkScreenWidth);
 
-
 // カウンター
 const counterDisplay = document.querySelector('.counter');
-
 const incrementButton = document.querySelector('.increment');
 const resetButton = document.querySelector('.reset');
 
@@ -60,6 +60,15 @@ let counterValue = 0;
 // カウンターの表示を更新する関数
 function updateCounterDisplay() {
     counterDisplay.textContent = counterValue;
+    
+    // 数値に応じて色を変更
+    if (counterValue > 10) {
+        counterDisplay.className = 'counter text-6xl font-bold text-red-600';
+    } else if (counterValue > 5) {
+        counterDisplay.className = 'counter text-6xl font-bold text-yellow-600';
+    } else {
+        counterDisplay.className = 'counter text-6xl font-bold text-blue-600';
+    }
 }
 
 // イベントリスナーの設定
@@ -78,7 +87,6 @@ const clockDisplay = document.querySelector('.clock');
 
 function getCurrentTime() {
     const now = new Date();
-
     const hours = now.getHours();
     const minutes = now.getMinutes();
     const seconds = now.getSeconds();
@@ -91,7 +99,7 @@ function formatTime(hours, minutes, seconds, milliseconds) {
     const h = hours.toString().padStart(2, '0');
     const m = minutes.toString().padStart(2, '0');
     const s = seconds.toString().padStart(2, '0');
-    const ms = Math.floor(milliseconds / 100);  // 0.1秒単位
+    const ms = Math.floor(milliseconds / 100);
 
     return `${h}:${m}:${s}.${ms}`;
 }
@@ -102,8 +110,8 @@ function updateClock() {
     clockDisplay.textContent = timeString;
 }
 
-setInterval(updateClock, 100);  // 100ミリ秒 = 0.1秒
-updateClock();  // 最初に一度実行
+setInterval(updateClock, 100);
+updateClock();
 
 // 文字数カウンター
 const textInput = document.querySelector('.string-input');
@@ -113,9 +121,19 @@ function updateCharacterCount() {
     const text = textInput.value;
     const count = text.length;
     stringCounterDisplay.textContent = count;
+    
+    // 文字数に応じて色を変更
+    if (count > 100) {
+        stringCounterDisplay.className = 'string-counter text-2xl font-bold text-red-600';
+    } else if (count > 50) {
+        stringCounterDisplay.className = 'string-counter text-2xl font-bold text-yellow-600';
+    } else {
+        stringCounterDisplay.className = 'string-counter text-2xl font-bold text-purple-600';
+    }
 }
 
-setInterval(updateCharacterCount, 1000);
-updateCharacterCount();  // 初期値を更新
+// リアルタイム更新に変更
+textInput.addEventListener('input', updateCharacterCount);
+updateCharacterCount();
 
 

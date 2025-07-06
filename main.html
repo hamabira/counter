@@ -4,25 +4,65 @@
     <meta charset="utf-8">
     <script src="script.js" defer></script>
     <title>practice</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- TailwindCSSを追加 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 既存のCSSファイルは削除またはコメントアウト -->
+    <!-- <link rel="stylesheet" href="style.css"> -->
 </head>
-<body>
+<body class="bg-gray-100 min-h-screen p-8">
 
-    <h1>Table</h1>
-    <table class="number-table">
-    </table>
+    <div class="max-w-4xl mx-auto space-y-8">
+        <!-- Table Section -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h1 class="text-2xl font-bold text-gray-800 mb-4">Table</h1>
+            <div class="flex justify-center">
+                <table class="number-table border-collapse border border-gray-400">
+                    <!-- JavaScriptで動的に作成 -->
+                </table>
+            </div>
+        </div>
 
-    <h1>Counter</h1>
-    <div class="counter">0</div>
-    <button class="increment">Increment</button>
-    <button class="reset">Reset</button>
+        <!-- Counter Section -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h1 class="text-2xl font-bold text-gray-800 mb-4">Counter</h1>
+            <div class="text-center space-y-4">
+                <div class="counter text-6xl font-bold text-blue-600">0</div>
+                <div class="space-x-4">
+                    <button class="increment bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-colors">
+                        Increment
+                    </button>
+                    <button class="reset bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition-colors">
+                        Reset
+                    </button>
+                </div>
+            </div>
+        </div>
 
-    <h1>Clock</h1>
-    <div class="clock">00:00:00.0</div> 
+        <!-- Clock Section -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h1 class="text-2xl font-bold text-gray-800 mb-4">Clock</h1>
+            <div class="text-center">
+                <div class="clock text-4xl font-mono text-green-600 bg-gray-800 p-4 rounded-lg inline-block">
+                    00:00:00.0
+                </div>
+            </div>
+        </div>
 
-    <h1>String Counter</h1>
-    <textarea class="string-input" placeholder="Type something..."></textarea>
-    <div class="string-counter">0</div>
+        <!-- String Counter Section -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h1 class="text-2xl font-bold text-gray-800 mb-4">String Counter</h1>
+            <div class="space-y-4">
+                <textarea 
+                    class="string-input w-full h-32 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                    placeholder="Type something..."
+                ></textarea>
+                <div class="text-center">
+                    <span class="text-gray-600">文字数: </span>
+                    <span class="string-counter text-2xl font-bold text-purple-600">0</span>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
